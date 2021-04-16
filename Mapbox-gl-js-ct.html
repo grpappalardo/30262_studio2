@@ -68,7 +68,26 @@
 var popup = new mapboxgl.Popup({closeOnClick: false})
 	.setHTML("<b>The Presidio.</b><br /> Explore to find a drinking fountain!")
 
+    /* Create a variable called "marker," 
+     * add to it a new Marker (ref: https://docs.mapbox.com/mapbox-gl-js/api/#marker),
+     * set its Lng, Lat to [-122.4700, 37.8011],
+     * set its popup to the popup variable you created earlier,
+     * and add it to the map.
+     */
+    
 // add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+});
+	  // add markers to map
 geojson.features.forEach(function(marker) {
 
   // create a HTML element for each feature
