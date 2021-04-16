@@ -74,7 +74,13 @@ var popup = new mapboxgl.Popup({closeOnClick: false})
      * set its popup to the popup variable you created earlier,
      * and add it to the map.
      */
-    
+    var marker = new mapboxgl.Marker()
+  .setLngLat([-122.4700, 37.8011])
+  .setPopup(popup)
+  .addTo(map);
+	  
+var marker = new mapboxgl.Marker()
+
 // add markers to map
 geojson.features.forEach(function(marker) {
 
@@ -92,7 +98,7 @@ geojson.features.forEach(function(marker) {
 
   // create a HTML element for each feature
   var el = document.createElement('div');
-  el.className = 'marker';
+ // el.className = 'marker';
 
   // make a marker for each feature and add to the map
   new mapboxgl.Marker(el)
