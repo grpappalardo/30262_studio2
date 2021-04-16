@@ -6,14 +6,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-  <!-- Add a `link` tag for Mapbox GL JS's CSS -->
+  <link rel="stylesheet" href="style.css"
   
-  <!-- Add a `script` tag for Mapbox GL JS's JavaScript -->
+ <!-- Add Mapbox GL JS JavaScript file -->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+
   
   <!-- Set the map's width: 800px and height: 600px in a `style` tag -->
   <style type="text/css">
     #mapId {
-      
+      width: 800px;
+      height: 600px;
     }
 
   </style>
@@ -33,7 +36,7 @@
   </ul>
   <br>
 
-  <!-- Create a div to house the map -->
+  div id="mapId"></div>
   
 
   <script>
@@ -45,14 +48,24 @@
     * Set the style URL to "mapbox://styles/mapbox/light-v10" 
     * See the Mapbox GL JS API reference for more info: https://docs.mapbox.com/mapbox-gl-js/api/ 
     */
-    
 
+/*code block from docs.mapbox.com*/
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JwYXBwYWxhcmRvIiwiYSI6ImNrbjk4eDUzZDA4emwycG9oNGgwd2d1ZXoifQ.dhSdtyE_eokJMYVaDAXDmg';
+    var map = new mapboxgl.Map({
+     container: 'map', // container ID
+      style: "mapbox://styles/mapbox/light-v10", // style URL
+      center: [-122.467, 37.798] // starting position [lng, lat]
+      zoom: 18 // starting zoom
+});
+
+  
 
     /* Create a variable called "popup" to store a new Popup instance (ref: https://docs.mapbox.com/mapbox-gl-js/api/#popup). 
-     * and set its HTML content to:
+     * and set its HTML content to:     
      * "<b>The Presidio.</b><br /> Explore to find a drinking fountain!"
      */
-    
+    var popup = "<b>The Presidio.</b><br /> Explore to find a drinking fountain!"
 
     /* Create a variable called "marker," 
      * add to it a new Marker (ref: https://docs.mapbox.com/mapbox-gl-js/api/#marker),
@@ -61,6 +74,21 @@
      * and add it to the map.
      */
     
+        
+    /*code block from docs. mapbox.com*/
+    
+// add markers to map
+geojson.features.forEach(function(marker) {
+
+  // create a HTML element for each feature
+  var el = document.createElement('div');
+  el.className = 'marker';
+
+  // make a marker for each feature and add to the map
+  new mapboxgl.Marker(el)
+    .setLngLat(marker.geometry.coordinates)
+    .addTo(map);
+});
 
   </script>
 </body>
