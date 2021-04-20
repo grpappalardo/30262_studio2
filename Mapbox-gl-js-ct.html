@@ -29,7 +29,7 @@
   <!-- Add multiple pages to web page-->
   <!-- active class displays the grey box around current page-->
   <ul>
-  	<li><a href="index.html" target="_self">Output 1</a></li>
+    <li><a href="index.html" target="_self">Output 1</a></li>
     <li><a href="Mapbox-gl-js-cwm.html" target="_self">Output 2</a></li>
     <li><a class="active" href="Mapbox-gl-js-ct.html" target="_self">Output 3</a></li>
     <li><a href="Mapbox-gl-js-bm.html" target="_self">Output 4</a></li>
@@ -51,12 +51,12 @@
 
 /*code block from docs.mapbox.com*/
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JwYXBwYWxhcmRvIiwiYSI6ImNrbjk4eDUzZDA4emwycG9oNGgwd2d1ZXoifQ.dhSdtyE_eokJMYVaDAXDmg';
+    mapboxgl.accessToken = "pk.eyJ1IjoiZ3JwYXBwYWxhcmRvIiwiYSI6ImNrbjk4eDUzZDA4emwycG9oNGgwd2d1ZXoifQ.dhSdtyE_eokJMYVaDAXDmg";
     var map = new mapboxgl.Map({
      container: 'mapId', // container ID
       style: "mapbox://styles/mapbox/light-v10", // style URL
       center: [-122.467, 37.798], // starting position [lng, lat]
-      zoom: 18; // starting zoom
+      zoom: 18 // starting zoom
 });
 
   
@@ -74,22 +74,22 @@ var popup = new mapboxgl.Popup({closeOnClick: false})
      * set its popup to the popup variable you created earlier,
      * and add it to the map.
      */
-    var marker = new mapboxgl.Marker()
+var marker = new mapboxgl.Marker()
   .setLngLat([-122.4700, 37.8011])
   .setPopup(popup)
   .addTo(map);
 	  
-var marker = new mapboxgl.Marker()
+//var marker = new mapboxgl.Marker()
 
 // add markers to map
 geojson.features.forEach(function(marker) {
 
   // create a HTML element for each feature
-  var el = document.createElement('div');
+var el = document.createElement('div');
   el.className = 'marker';
 
   // make a marker for each feature and add to the map
-  new mapboxgl.Marker(el)
+new mapboxgl.Marker(el)
     .setLngLat(marker.geometry.coordinates)
     .addTo(map);
 });
@@ -97,7 +97,7 @@ geojson.features.forEach(function(marker) {
 geojson.features.forEach(function(marker) {
 
   // create a HTML element for each feature
-  var el = document.createElement('div');
+//  var el = document.createElement('div');
  // el.className = 'marker';
 
   // make a marker for each feature and add to the map
